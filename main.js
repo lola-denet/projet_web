@@ -127,7 +127,7 @@ function initialiser(){
     ctx.stroke(); 
     // Dessine les neurotransmetteurs
     for (let i = 0; i < neuro_transmetteurs.length; i++) {
-        //neuro_transmetteurs[i].desuperposer()
+        neuro_transmetteurs[i].desuperposer()
         neuro_transmetteurs[i].dessiner(); 
     }
     // Dessine les récepteurs
@@ -186,7 +186,7 @@ while(neuro_transmetteurs.length<nombre_NT){
     let cercle = new NeuroT(
         x_NT,
         height * 0.35,
-        0.25,
+        1,
         'rgb(' + 255 + ',' + 165 + ',' + 0 +')',
         size
     );
