@@ -45,25 +45,39 @@ class NeuroT {
 
 class Recepteur {
     // Constructeur
-    constructor(x, y, color, size) {
+    constructor(x, y, velY, color, size) {
         this.x = x;
         this.y = y;
+        this.velY = velY;
         this.color = color;
-        this.size = size;
+        this.size_l = size;
+        this.size_L = size;
     }
     // Fonction chargée de dessiner sur le canvas
     dessiner() {
         ctx.beginPath();
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.size, this.size);
+        ctx.fillRect(this.x, this.y, this.size_l, this.size_L);
         ctx.fill();
     } 
+
+    afficher() {
+        this.y += this.velY;
+    }
+
     // Fonction chargée de détecter l'arrivée d'un neurotransmetteur au niveau d'un récepteur fermé
     detecter(){
-        
+        for(let i=0; i<neuro_transmetteurs.length; i++){
+            let distance=neuro_transmetteurs[i].y + neuro_transmetteurs[i].size;
+            if (this.y <= distance-30 && neuro_transmetteurs[i].x > this.x - 30 && neuro_transmetteurs[i].x < this.x +30){
+                this.color='rgb(' + 60 + ',' + 179 + ',' + 113 +')';
+                this.size_l = 60;
+                this.velY=1;
+            }
+        }
     }
-}
 
+}
 
 // Fonction qui rafraichit la page
 function reset(){
@@ -72,7 +86,13 @@ function reset(){
 
 // Fonction qui affiche les résultats de la simulation puis rafraichit la page
 function resultats(){
-    alert("Simulation terminée !" + "\n" + "Il y a " + nb_ouverts + " récepteurs ouverts ")
+    let nb_ouverts=0;
+    for (el of recepteurs){
+        if (el.size_l === 60){
+            nb_ouverts+=1;
+        }
+    }
+    alert("Simulation terminée !" + "\n" + "Il y a " + nb_ouverts + " récepteurs ouverts sur " + recepteurs.length + " recepteurs.")
     reset()
 }
 
@@ -127,12 +147,12 @@ function initialiser(){
     ctx.stroke(); 
     // Dessine les neurotransmetteurs
     for (let i = 0; i < neuro_transmetteurs.length; i++) {
-        neuro_transmetteurs[i].desuperposer()
         neuro_transmetteurs[i].dessiner(); 
     }
     // Dessine les récepteurs
     for (let i = 0; i < recepteurs.length; i++){
         recepteurs[i].dessiner();
+        
     }
 }
 
@@ -145,7 +165,8 @@ function simuler() {
     }
     for (let i = 0; i < recepteurs.length; i++){
         recepteurs[i].dessiner();
-        //recepteurs[i].detecter();
+        recepteurs[i].afficher();
+        recepteurs[i].detecter();
     }
     requestAnimationFrame(simuler);
 }
@@ -171,6 +192,7 @@ for (let i=0; i<nombre_Rec;i++){
     let carre = new Recepteur(
         x_recepteur[i],
         height * 0.80,
+        0,
         'rgb(' + 30 + ',' + 144 + ',' + 255 +')',
         size
     );
@@ -191,10 +213,12 @@ while(neuro_transmetteurs.length<nombre_NT){
         size
     );
     neuro_transmetteurs.push(cercle);
+
+}
+for (let i = 0; i < neuro_transmetteurs.length; i++) {
+    neuro_transmetteurs[i].desuperposer();
 }
 
-
-let nb_ouverts=10;
 
 // Appels de fonctions
 initialiser();
