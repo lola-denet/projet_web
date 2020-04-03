@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Modélisation d'un processus biologique simplifié sur une page web" /> 
+    <meta name="keywords" content="projet, HTML, Web, js, CSS, bioinformatique" />
+    <meta name="author" content="Lola Denet" />
+    <title>Processus Biologique - Sujet 1</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Modélisation d'un processus biologique : Sujet 1</h1>
+
+    <p>
+        <input type="button" id="debut" value="Débuter la simulation" onclick="simuler(), timer()"/>
+        <input type="button" id="fin" value="Stopper la simulation" onclick="resultats()"/>
+        <input type="button" id="reset" value="Reset" onclick="reset()"/>
+    </p>
+
+    <div>
+        <canvas id="canvas"></canvas>
+    </div> 
+
+    <script src="main.js"></script>
+  
+    <footer>
+      <p>Université de Bordeaux - Master 1 bioinformatique</p>
+      <p>Année 2019/2020</p>
+      <p>Code source testé et validé par W3C le 30/03/2020</p>
+    </footer>
+  </body>
+
+
+
+</html>
