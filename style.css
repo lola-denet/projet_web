@@ -21,10 +21,11 @@ h1 {
 }
 
 input {
-    font-size: 200%;
+    font-size: 150%;
 }
 
 footer {
+    line-height: 50%;
     margin-bottom: 2%;
     font-size: 14pt;
     font-style: italic;
