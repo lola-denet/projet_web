@@ -92,7 +92,7 @@ function resultats() {
             nb_ouverts += 1;
         }
     }
-    alert("Simulation terminée !" + "\n" + "Il y a " + nb_ouverts + " récepteurs ouverts sur " + recepteurs.length + " récepteurs.");
+    alert("Simulation terminée !" + "\n" + "Avec " + neuro_transmetteurs.length + " neurotransmetteurs au départ. " + "Il y a " + nb_ouverts + " récepteurs ouverts sur " + recepteurs.length + " récepteurs.");
     reset();
 }
 
