@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Modélisation d'un processus biologique simplifié sur une page web" /> 
+    <meta name="keywords" content="projet, HTML, Web, js, CSS, bioinformatique" />
+    <meta name="author" content="Lola Denet" />
+    <title>Processus Biologique - Sujet 1</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Modélisation d'un processus biologique : Sujet 1</h1>
+
+    <p class="lien"><a href="article.pdf" target="blank">Cliquez ici pour afficher l'article lié à ce modèle</a></p>
+    
+    <form> 
+          <label for="vitesse">Veuillez saisir la vitesse des neuro-transmetteurs : </label>
+          <input class="vitesse" id="vitesse" type="text" name="text" value="0.5">
+    </form>
+    <form> 
+      <label for="duree">Veuillez saisir la durée de simulation en secondes : </label>
+      <input class="duree" id="duree" type="text" name="text" value="120">
+</form>
+    <div>
+      <input type="submit" id="debut" value="Débuter la simulation" onclick="simuler(), timer()"/>
+      <input type="button" id="fin" value="Stopper la simulation" onclick="resultats()"/>
+      <input type="button" id="reset" value="Reset" onclick="reset()"/>
+    </div>
+
+    <div>
+      <canvas id="canvas"></canvas>
+    </div> 
+
+    <script src="main.js"></script>
+  
+    <footer>
+      <p>Université de Bordeaux - Master 1 bioinformatique</p>
+      <p>Lola Denet - Année 2019/2020</p>
+      <p>Code source testé et validé par W3C le 9/04/2020</p>
+    </footer>
+
+  </body>
+
+</html>
